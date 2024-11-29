@@ -15,8 +15,8 @@
   </form>
 
             <!--for(Libro libro: libri) -->
-    <div th:each="libro : ${libri}"><!--foreacch la lista libri passata nel model -->
-        <span th:text="${libro.titolo}"></span>  <span th:text="${libro.autore}"></span><br/>
+    <div th:each="libro : ${libri}"><!--foreacch la lista libri passata nel model     - libro.id = 2        href="libro/dettaglio?id=2                                                          -->
+        <span th:text="${libro.titolo}"></span>  <span th:text="${libro.autore}"></span><br/> <a th:href="@{libro/dettaglio(id=${libro.id})}">DETTAGLIO</a>
     </div>
 </body>
 </html>

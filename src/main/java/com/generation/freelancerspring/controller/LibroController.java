@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//http://localhost:8080/libro
+//http://localhost:8080/libro GET
 @Controller
 @RequestMapping("/libro")
 public class LibroController
@@ -33,6 +33,15 @@ public class LibroController
 		List<Libro> libri = repo.findAll();
 		model.addAttribute("libri", libri);
 		return "gestoreLibro";
+	}
+
+	//http://localhost:8080/libro/dettaglio
+	@GetMapping("/dettaglio")
+	public String dettaglio(@RequestParam int id,Model model)
+	{
+		Libro libro = repo.findById(id).get();
+		model.addAttribute("libro", libro);
+		return "dettaglioLibro";
 	}
 
 
