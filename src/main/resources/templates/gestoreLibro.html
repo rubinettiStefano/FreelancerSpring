@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestore Libro</title>
+</head>
+<body>
+  <img width="150" height="150" src="https://c8.alamy.com/compit/rhwfm6/illustrazione-a-colori-di-un-libro-aperto-semplice-disegno-rhwfm6.jpg" />
+
+  <form method="post" action="libro">
+    <input type="text" name="titolo" placeholder="titolo" />
+    <input type="text" name="autore" placeholder="autore" />
+    <input type="submit" value="Salva" />
+
+  </form>
+
+            <!--for(Libro libro: libri) -->
+    <div th:each="libro : ${libri}"><!--foreacch la lista libri passata nel model -->
+        <span th:text="${libro.titolo}"></span>  <span th:text="${libro.autore}"></span><br/>
+    </div>
+</body>
+</html>
