@@ -5,7 +5,15 @@
     <title>HOMEPAGE</title>
 </head>
 <body>
-    <h1>HOMEPAGE</h1>
-    <a href="libro">VAI GESTORE LIBRI</a>
+    <form action="/login" method="post">
+        <input type="text" name="nomeUtente" placeholder="Username" />
+        <input type="text" name="parolaSicurezza" placeholder="Password" />
+        <input type="submit" value="Login" />
+    </form>
+
+    <div th:if="${loginSbagliato}" >
+        <h2 style="color: red">SIGNORINO HA SBAGLIATO LE CREDENZIALI,MI FACCIA IL FAVORE DI INSERIRE QUELLE CORRETTE</h2>
+    </div>
+
 </body>
 </html>

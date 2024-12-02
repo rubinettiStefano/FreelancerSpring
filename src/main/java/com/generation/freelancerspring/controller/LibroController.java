@@ -1,7 +1,8 @@
 package com.generation.freelancerspring.controller;
 
+import com.generation.freelancerspring.controller.helpers.ControllerHelper;
+import com.generation.freelancerspring.controller.helpers.ControllerHelperImpl;
 import com.generation.freelancerspring.model.entities.Libro;
-import com.generation.freelancerspring.model.repositories.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,12 @@ import java.util.List;
 public class LibroController
 {
 	@Autowired
-	private LibroRepository repo;
+	private ControllerHelper helper;
 
 	@PostMapping
 	public String inserisciLibro(@ModelAttribute Libro libro)
 	{
-		repo.save(libro);
+		helper.saveLibro(libro);
 		return "redirect:/libro";//reindirizzami a GET /libro
 	}
 
@@ -30,7 +31,7 @@ public class LibroController
 	@GetMapping
 	public String paginaGestioneLibri(Model model)
 	{
-		List<Libro> libri = repo.findAll();
+		List<Libro> libri = helper.getAllLibris();
 		model.addAttribute("libri", libri);
 		return "gestoreLibro";
 	}
@@ -39,7 +40,7 @@ public class LibroController
 	@GetMapping("/dettaglio")
 	public String dettaglio(@RequestParam int id,Model model)
 	{
-		Libro libro = repo.findById(id).get();
+		Libro libro = helper.getLibro(id);
 		model.addAttribute("libro", libro);
 		return "dettaglioLibro";
 	}
