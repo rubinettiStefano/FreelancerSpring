@@ -71,7 +71,6 @@ public class ControllerHelperImpl implements ControllerHelper
 
 		if (res == null)
 			throw new InvalidCredentialsException();
-
 		return res;
 	}
 }

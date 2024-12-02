@@ -5,9 +5,18 @@
     <title>HOMEPAGE</title>
 </head>
 <body>
+    <div th:insert="~{navbar}"></div>
     <form action="/login" method="post">
         <input type="text" name="nomeUtente" placeholder="Username" />
         <input type="text" name="parolaSicurezza" placeholder="Password" />
+
+        <select name="nomeProprietà">
+            <option value="TO">Torino</option>
+            <option value="veroValore2">SCRITTA VALORE 2</option>
+            <option value="veroValore3">SCRITTA VALORE 3</option>
+        </select>
+
+
         <input type="submit" value="Login" />
     </form>
 

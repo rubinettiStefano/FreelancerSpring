@@ -22,8 +22,13 @@ public class UtenteController
 	ControllerHelper helper;
 
 	@PostMapping
-	public String login(@RequestParam String nomeUtente, @RequestParam String parolaSicurezza, HttpSession session)
+	public String login(@RequestParam String nomeUtente, @RequestParam String parolaSicurezza,@RequestParam String nomeProprieta, HttpSession session)
 	{
+		TipoUtente t = TipoUtente.valueOf(nomeProprieta.toUpperCase());
+		if(!t.equals(TipoUtente.ADMIN))
+			throw new InvalidCredentialsException();
+		//per fare logout ci basta cancellare la session
+		//session.invalidate();
 
 		Utente u = helper.getUtenteByUsnAndPwd(nomeUtente, parolaSicurezza);
 		session.setAttribute("utente", u);
